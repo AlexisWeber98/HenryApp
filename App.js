@@ -1,20 +1,23 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { Text, View, Image, TextInput } from "react-native";
 
-export default function App() {
+export default App = () => {
+  const [text, setText] = useState("");
+
+  const handleTextChange = (newText) => {
+    setText(newText);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Welcome to Henry App!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Image source={require("./assets/favicon.png")} />
+      <TextInput
+        placeholder="Tap Here to Capitalize"
+        onChangeText={handleTextChange} 
+        value={text} 
+      />
+
+      <Text>{text.toUpperCase()}</Text>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+};
